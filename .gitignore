@@ -1,10 +1,85 @@
-# Python-generated files
+# =========================
+# Python
+# =========================
 __pycache__/
-*.py[oc]
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+.venv/
+ENV/
+
+# =========================
+# Django
+# =========================
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# =========================
+# FastAPI / General
+# =========================
+*.env
+.env
+.env.*
+*.local
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Testing / Coverage
+# =========================
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# =========================
+# Mypy / Ruff / Linters
+# =========================
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+
+# =========================
+# Build / Distribution
+# =========================
 build/
 dist/
-wheels/
-*.egg-info
+*.egg-info/
+.eggs/
 
-# Virtual environments
-.venv
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Node (если будет фронт)
+# =========================
+node_modules/
+package-lock.json
