@@ -16,11 +16,11 @@ go to SubscriptionRepository, not through the Exam aggregate.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from uuid import UUID, uuid4
 
-from src.shared_kernel.domain.identity import CourseId, ExamId, RoomId
+from src.shared_kernel.domain.identity import CourseId, ExamId, RoomId, StudentId
 
 
 class ExamType(Enum):
@@ -69,7 +69,7 @@ class Exam:
             duration_minutes=duration_minutes,
             exam_type=exam_type,
             room_id=room_id,
-            created_at=datetime.utcnow(),
+            created_at=datetime.now(UTC),
         )
 
     def reschedule(self, new_time: datetime) -> None:
@@ -91,7 +91,7 @@ class StudentExamSubscription:
     student_id: "StudentId"  # noqa: F821
     exam_id: ExamId
     notify_before_hours: list[int] = field(default_factory=lambda: [24, 2])
-    subscribed_at: datetime = field(default_factory=datetime.utcnow)
+    subscribed_at: datetime = field(default_factory=datetime.now)
 
     @classmethod
     def create(

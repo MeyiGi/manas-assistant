@@ -243,7 +243,7 @@ class TestFakeEventBus:
 
         bus = FakeEventBus()
         event = TimetableScraped(department_count=5, course_count=100)
-        asyncio.get_event_loop().run_until_complete(bus.publish(event))
+        asyncio.run(bus.publish(event))
 
         assert len(bus.published) == 1
         scraped = bus.events_of(TimetableScraped)

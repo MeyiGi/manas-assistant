@@ -19,7 +19,7 @@ Repository reflects this:
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, UTC
 from enum import Enum
 from uuid import UUID, uuid4
 
@@ -74,7 +74,7 @@ class Document:
             file_type=file_type,
             storage_key=storage_key,
             status=DocumentStatus.UPLOADED,
-            uploaded_at=datetime.utcnow(),
+            uploaded_at=datetime.now(UTC),
         )
 
     def mark_processing(self) -> None:
@@ -82,7 +82,7 @@ class Document:
 
     def mark_ready(self) -> None:
         self.status = DocumentStatus.READY
-        self.processed_at = datetime.utcnow()
+        self.processed_at = datetime.now(UTC)
 
     def mark_failed(self) -> None:
         self.status = DocumentStatus.FAILED
@@ -140,7 +140,7 @@ class QASession:
     document_id: DocumentId
     student_id: StudentId
     exchanges: list[QAExchange] = field(default_factory=list)
-    created_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=datetime.now)
 
     @classmethod
     def start(cls, document_id: DocumentId, student_id: StudentId) -> "QASession":
@@ -151,7 +151,7 @@ class QASession:
             QAExchange(
                 question=question,
                 answer=answer,
-                asked_at=datetime.utcnow(),
+                asked_at=datetime.now(UTC),
                 source_chunk_indices=source_indices,
             )
         )

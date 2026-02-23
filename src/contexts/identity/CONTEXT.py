@@ -21,7 +21,7 @@ from __future__ import annotations
 # ── Domain ──────────────────────────────────────────────────────────────────
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from uuid import UUID, uuid4
 
@@ -66,11 +66,11 @@ class User:
             email=email,
             manas_username=manas_username,
             role=role,
-            created_at=datetime.utcnow(),
+            created_at=datetime.now(UTC),
         )
 
     def record_login(self) -> None:
-        self.last_login_at = datetime.utcnow()
+        self.last_login_at = datetime.now(UTC)
 
 
 # ── Application ports ────────────────────────────────────────────────────────

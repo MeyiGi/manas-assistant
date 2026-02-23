@@ -25,7 +25,7 @@ class Clock(Protocol):
     """Provide the current UTC time.
 
     Inject this into every use case that touches time-sensitive logic.
-    Never call datetime.utcnow() directly in domain or application layers.
+    Never call datetime.now(UTC) directly in domain or application layers.
     Tests use FakeClock from tests/shared/fakes/clock.py.
     """
 

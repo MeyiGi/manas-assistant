@@ -82,7 +82,7 @@ class StudentSavedTimetable:
     student_id: StudentId
     label: str
     entry_ids: list[UUID] = field(default_factory=list)
-    saved_at: datetime = field(default_factory=datetime.utcnow)
+    saved_at: datetime = field(default_factory=datetime.now)
 
     @classmethod
     def create(cls, student_id: StudentId, label: str = "My Timetable") -> "StudentSavedTimetable":
@@ -112,7 +112,7 @@ class TeacherSavedTimetable:
     teacher_id: TeacherId
     label: str
     entry_ids: list[UUID] = field(default_factory=list)
-    saved_at: datetime = field(default_factory=datetime.utcnow)
+    saved_at: datetime = field(default_factory=datetime.now)
 
     @classmethod
     def create(cls, teacher_id: TeacherId, label: str = "My Classes") -> "TeacherSavedTimetable":
